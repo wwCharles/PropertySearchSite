@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema(
     },
     avatar: {
       type: String,
-      // default: userImg,
+      default: "",
     },
   },
   { timestamps: true }
