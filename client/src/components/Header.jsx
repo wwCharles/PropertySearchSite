@@ -27,7 +27,7 @@ export default function Header() {
               Home
             </li>
           </Link>
-          <Link to="/signin">
+          <Link to="/profile">
             {currentUser ? (
               <img
                 className="rounded-full h-7 w-7 object-cover"
