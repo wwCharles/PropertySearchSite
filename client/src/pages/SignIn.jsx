@@ -73,7 +73,8 @@ export default function SignIn() {
           <span className="text-blue-700">Sign In</span>
         </Link>
       </div>
-      {error && <p className="text-3xl text-center font-semibold">{error}</p>}
+      <p className="text-red-700 mt-5">{error ? error : ""}</p>
+      {/* {error && <p className="text-3xl text-center font-semibold">{error}</p>} */}
     </div>
   );
 }
