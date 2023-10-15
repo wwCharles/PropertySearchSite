@@ -18,7 +18,8 @@ const userSchema = new mongoose.Schema(
     },
     avatar: {
       type: String,
-      default: "",
+      default:
+        "/Users/charleswanyoike/Documents/codeProjects/PropertySearchSite/client/src/assets/profile.png",
     },
   },
   { timestamps: true }
