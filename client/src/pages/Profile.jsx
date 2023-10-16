@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { app } from "../firebase";
+import { Link } from "react-router-dom";
 import {
   getDownloadURL,
   getStorage,
@@ -109,12 +110,12 @@ export default function Profile() {
       const res = await fetch(`/api/auth/signout`);
       const data = await res.json();
       if (data.success === false) {
-        dispatch(deleteUserFailure(data.message));
+        dispatch(signOutUserFailure(data.message));
         return;
       }
-      dispatch(deleteUserSuccess(data));
+      dispatch(signOutUserSuccess(data));
     } catch (error) {
-      dispatch(deleteUserFailure(data.message));
+      dispatch(signOutUserFailure(data.message));
     }
   };
 
@@ -177,9 +178,12 @@ export default function Profile() {
         >
           {loading ? "Loading..." : "Update"}
         </button>
-        <button className="bg-green-700 text-white rounded-lg p-3 uppercase hover:opacity-95 disabled:opacity-80 ">
+        <Link
+          to={"/create-listing"}
+          className="bg-green-700 text-white rounded-lg p-3 text-center uppercase hover:opacity-95 disabled:opacity-80"
+        >
           create listing
-        </button>
+        </Link>
       </form>
       <div className="flex justify-between mt-5">
         <span onClick={handleDelete} className="text-red-700 cursor-pointer">
