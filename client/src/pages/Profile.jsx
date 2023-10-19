@@ -143,7 +143,7 @@ export default function Profile() {
       });
       const data = await res.json();
       if (data.success === false) {
-        console.log(data.message);
+        // console.log(data.message);
         return;
       }
 
@@ -151,7 +151,7 @@ export default function Profile() {
         prev.filter((listing) => listing._id !== listingId)
       );
     } catch (error) {
-      console.log(error.message);
+      // console.log(error.message);
     }
   };
 
@@ -277,20 +277,6 @@ export default function Profile() {
           ))}
         </div>
       )}
-      {/* <Link
-        key={listing._id}
-        to={`/listing/${listing._id}`}
-        className="flex justify-between items-center"
-      >
-        <div>
-          <img
-            src={listing.imageUrls[0]}
-            alt="Error no image found"
-            className="h-24 w-24 object-contain rounded-lg"
-          />
-          <p>{listing.name}</p>
-        </div>
-      </Link> */}
     </div>
   );
 }
