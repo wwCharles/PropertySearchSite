@@ -198,6 +198,15 @@ export default function createListing() {
             onChange={handleChange}
             value={formData.address}
           />
+          <input
+            type="number"
+            placeholder="Contact Person"
+            className="border p-3 rounded-lg"
+            id="phone"
+            required
+            onChange={handleChange}
+            value={formData.phone}
+          />
           <div className="flex gap-6 flex-wrap">
             <div className="flex gap-2">
               <input
