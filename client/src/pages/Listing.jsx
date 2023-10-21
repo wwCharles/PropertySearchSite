@@ -20,7 +20,7 @@ export default function Listing() {
   const [error, setError] = useState(false);
   const params = useParams();
   const [show, setShow] = useState(false);
-  const [contact, setContact] = useState(false);
+  // const [contact, setContact] = useState(false);
   const { currentUser } = useSelector((state) => state.user);
 
   useEffect(() => {
@@ -57,15 +57,6 @@ export default function Listing() {
             {listing.imageUrls.map((url) => (
               <SwiperSlide key={url}>
                 <img src={url} />
-                {/* <div
-                  className="h-[550px]"
-                  style={{
-                    height: 360,
-                    width: "auto",
-                    background: `url(${url}) center no-repeat`,
-                    backgroundSize: "cover",
-                  }}
-                ></div> */}
               </SwiperSlide>
             ))}
           </Swiper>
@@ -75,23 +66,6 @@ export default function Listing() {
               <p className="bg-red-900 w-full max-w-[100px] text-white text-center p-1 rounded-lg">
                 {listing.type === "rent" ? "For Rent" : "For Sale"}
               </p>
-              {/* <p
-                className="bg-red-900 w-full max-w-[100px] text-white text-center p-1 rounded-lg"
-                onClick={() => {
-                  navigator.clipboard.writeText(window.location.href);
-                  setCopied(true);
-                  setTimeout(() => {
-                    setCopied(false);
-                  }, 2000);
-                }}
-              >
-                {copied ? "Copied" : "copy"}
-              </p> */}
-              {/* {listing.price && (
-                <p className="bg-green-900 w-full max-w-[200px] text-white text-center p-1 rounded-md">
-                  ${+listing.price - +listing.discountPrice} OFF
-                </p>
-              )} */}
             </div>
             <p className="text-2xl font-semibold">
               {listing.name}
@@ -103,7 +77,6 @@ export default function Listing() {
               <FaMapMarkerAlt className="text-red-700" />
               {listing.address}
             </p>
-
             <p className="text-slate-800">
               <span className="font-semibold text-black">Description</span>
               <br />
@@ -156,8 +129,6 @@ export default function Listing() {
             ) : (
               ""
             )}
-
-            {/* {contact && <Contact listing={listing} />} */}
           </div>
         </div>
       )}
