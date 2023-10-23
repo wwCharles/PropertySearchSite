@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import ListingItem from "../components/ListingItem";
 
 export default function () {
   const [sidebarData, setsidebarData] = useState({
@@ -50,11 +51,11 @@ export default function () {
       const searchQuery = urlParams.toString();
       const res = await fetch(`/api/listing/get/?${searchQuery}`);
       const data = await res.json();
-      // if (data.length > 8) {
-      //   setShowMore(true);
-      // } else {
-      //   setShowMore(false);
-      // }
+      if (data.length > 8) {
+        setShowMore(true);
+      } else {
+        setShowMore(false);
+      }
       setListings(data);
       setLoading(false);
     };
@@ -106,6 +107,21 @@ export default function () {
     navigate(`/search?${searchQuery}`);
   };
 
+  const onShowMoreClick = async () => {
+    const numberofListings = listings.length;
+    const urlParams = new URLSearchParams(location.search);
+    urlParams.set("startindex", startIndex);
+    const startIndex = numberofListings;
+    const searchQuery = urlParams.toString();
+    const res = await fetch(`/api/listing/get?${searchQuery}`);
+    const data = await res.json();
+
+    if (data.length < 9) {
+      setShowMore(false);
+    }
+    setShowMore([...listings, ...data]);
+  };
+
   return (
     <div className="flex flex-col md:flex-row">
       <div className="p-7 border-b-2 md:border-r-2 md:min-h-screen">
@@ -122,7 +138,9 @@ export default function () {
               //   value={search}
               //   onChange={(e) => setSearch(e.target.value)}
             />
-            <FaSearch className="text-slate-500 " />
+            <button>
+              <FaSearch className="text-slate-500 " />
+            </button>
             {/* <input
               type="text"
               id="searchterm"
@@ -204,10 +222,29 @@ export default function () {
           </button>
         </form>
       </div>
-      <div className="">
+      <div className="flex-1  ">
         <h1 className="text-3xl font-semibold border-b p-3 text-slate-700 mt-5  ">
           Listing Results
         </h1>
+        <div className="flex flex-wrap gap-4 ">
+          {loading && listings.length === 0 && (
+            <p className="text-lg text-slate-700 p-7 ">No Properties found</p>
+          )}
+          {loading && <p>Loading...</p>}
+          {!loading &&
+            listings &&
+            listings.map((listing) => (
+              <ListingItem key={listing._id} listing={listing} />
+            ))}
+          {showMore && (
+            <button
+              onClick={onShowMoreClick}
+              className="text-green-700 hover:text-green-400 p-7 text-center w-full  "
+            >
+              show more
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );
