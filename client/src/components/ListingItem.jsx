@@ -10,7 +10,7 @@ export default function ListingItem({ listing }) {
         <img
           src={listing.imageUrls}
           alt="cover image"
-          className="h-[320px] sm:h-[220px] w-[320px] object-cover hover:scale-110 transition
+          className=" w-[420px] object-contain hover:scale-110 transition
           -scale duration-300 "
         />
         <div className="">

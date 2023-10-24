@@ -10,7 +10,6 @@ export default function Header() {
 
   const submit = (e) => {
     e.preventDefault();
-
     const urlParams = new URLSearchParams(window.location.search);
     urlParams.set("searchTerm", searchTerm);
     const searchQuery = urlParams.toString();
@@ -21,22 +20,21 @@ export default function Header() {
     const urlParams = new URLSearchParams(location.search);
     const searchTermFromUrl = urlParams.get("searchTerm");
     if (searchTermFromUrl) {
-      setSearch(searchTermFromUrl);
+      setSearchTerm(searchTermFromUrl);
     }
   }, [location.search]);
-
   return (
-    <header className="bg-slate-200 shadow-md">
+    <header className="bg-blue-100">
       <div className="flex justify-between items-center max-w-6xl mx-auto p-3">
         <Link to="/">
           <h1 className="font-bold text-sm sm:text-xl flex flex-wrap">
-            <span className="text-slate-500">Rent</span>
-            <span className="text-slate-700">254</span>
+            <span className="text-red-800 text-4xl  ">Rent</span>
+            <span className="text-slate-800">254</span>
           </h1>
         </Link>
         <form
           onSubmit={submit}
-          className="bg-slate-100 p-3 rounded-lg flex items-center"
+          className="bg-slate-100 p-2 rounded-lg flex items-center"
         >
           <input
             type="text"
@@ -51,19 +49,19 @@ export default function Header() {
         </form>
         <ul className="flex gap-4">
           <Link to="/">
-            <li className="hidden sm:inline text-slate-700 hover:underline">
+            <li className="hidden sm:inline text-slate-800 hover:text-blue-400  text-2xl">
               Home
             </li>
           </Link>
           <Link to="/profile">
             {currentUser ? (
               <img
-                className="rounded-full h-7 w-7 object-cover"
+                className="rounded-full h-8 w-8 object-cover"
                 src={currentUser.avatar}
-                alt="profile"
+                alt="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQG7WjONaOfilXR3bebrfe_zcjl58ZdAzJHYw&usqp=CAU"
               />
             ) : (
-              <li className="hidden sm:inline text-slate-700 hover:underline">
+              <li className="hidden sm:inline text-slate-800 hover:text-blue-400 text-2xl ">
                 Sign In
               </li>
             )}

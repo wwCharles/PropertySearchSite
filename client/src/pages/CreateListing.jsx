@@ -8,6 +8,7 @@ import React, { useState } from "react";
 import { app } from "../firebase";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import imageCompression from "browser-image-compression";
 
 export default function createListing() {
   const { currentUser } = useSelector((state) => state.user);
@@ -31,14 +32,23 @@ export default function createListing() {
 
   // console.log(formData);
   const [imageUploadError, setImageUploadError] = useState(false);
-  const handleImageSubmit = (e) => {
+
+  const handleImageSubmit = async (e) => {
     if (files.length > 0 && files.length + formData.imageUrls.length < 7) {
       setUpLoading(true);
       setImageUploadError(false);
       const promises = [];
+
+      const options = {
+        maxSizeMB: 2,
+        maxWidthOrHeight: 1920,
+      };
+
       for (let i = 0; i < files.length; i++) {
-        promises.push(storeImage(files[i]));
+        const compressedFile = await imageCompression(files[i], options);
+        promises.push(storeImage(compressedFile));
       }
+
       Promise.all(promises)
         .then((urls) => {
           setFormData({

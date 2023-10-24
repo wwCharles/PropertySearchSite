@@ -31,6 +31,7 @@ export default function Profile() {
   const dispatch = useDispatch();
   const [showListingsError, setShowListingsError] = useState(false);
   const [userListings, setuserListings] = useState([]);
+  const [viewListing, setViewListing] = useState(false);
 
   useEffect(() => {
     if (file) {
@@ -127,11 +128,27 @@ export default function Profile() {
       const res = await fetch(`/api/user/listings/${currentUser._id}`);
       const data = await res.json();
       if (data.success === false) {
+        setViewListing(false);
         setShowListingsError(true);
         return;
       }
-      setuserListings(data);
+      if (data.length >= 1) {
+        setViewListing(true);
+        setuserListings(data);
+      }
     } catch (error) {
+      setViewListing(false);
+      setShowListingsError(true);
+    }
+  };
+
+  const hidelisting = async () => {
+    try {
+      setShowListingsError(false);
+      setViewListing(false);
+      setuserListings([]);
+    } catch (error) {
+      setViewListing(false);
       setShowListingsError(true);
     }
   };
@@ -143,7 +160,7 @@ export default function Profile() {
       });
       const data = await res.json();
       if (data.success === false) {
-        // console.log(data.message);
+        console.log(data.message);
         return;
       }
 
@@ -151,7 +168,7 @@ export default function Profile() {
         prev.filter((listing) => listing._id !== listingId)
       );
     } catch (error) {
-      // console.log(error.message);
+      console.log(error.message);
     }
   };
 
@@ -233,9 +250,14 @@ export default function Profile() {
       <p className="text-green-700 mt-5">
         {updateSuccess ? "User updated" : ""}
       </p>
-      <button onClick={showListings} className="text-green-700 w-full">
-        View Lisings
+      <button className="text-green-700 w-full">
+        {viewListing ? (
+          <p onClick={hidelisting}>Hide Listing</p>
+        ) : (
+          <p onClick={showListings}>Show listintg</p>
+        )}
       </button>
+
       <p>{showListingsError ? "Error showing listing" : ""}</p>
 
       {userListings && userListings.length > 0 && (
@@ -252,7 +274,7 @@ export default function Profile() {
                 <img
                   src={listing.imageUrls[0]}
                   alt="listing cover"
-                  className="h-24 w-24 object-contain"
+                  className="h-24 w-24 object-contain rounded"
                 />
               </Link>
               <Link
