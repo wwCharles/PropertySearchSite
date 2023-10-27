@@ -43,8 +43,8 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="">
-      <div className="max-h-full  p-1 flex flex-col gap-8  bg-slate-200">
+    <div>
+      <div className="max-h-full  p-1 flex flex-col gap-8 ">
         {rentListings && rentListings.length > 0 && (
           <div className="">
             <div className="my-3">

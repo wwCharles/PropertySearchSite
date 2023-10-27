@@ -62,7 +62,7 @@ export default function Header() {
               />
             ) : (
               <li className="hidden sm:inline text-slate-800 hover:text-blue-400 text-2xl ">
-                Sign In
+                Login
               </li>
             )}
           </Link>

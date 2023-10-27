@@ -289,7 +289,7 @@ export default function createListing() {
                 type="number"
                 id="price"
                 min="10000"
-                max="10000000"
+                max="1000000000"
                 required
                 className="p-3 s border border-gray-300 rounded-lg"
                 onChange={handleChange}
