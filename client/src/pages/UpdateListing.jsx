@@ -31,15 +31,12 @@ export default function createListing() {
   const navigate = useNavigate();
   const params = useParams();
 
-  // console.log(formData);
-
   useEffect(() => {
     const fetchListing = async () => {
       const listingId = params.listingId;
       const res = await fetch(`/api/listing/get/${listingId}`);
       const data = await res.json();
       if (data.success == +false) {
-        // console.log(data.message);
         return;
       }
       setFormData(data);
@@ -93,7 +90,6 @@ export default function createListing() {
         (snapshot) => {
           const progress =
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          // console.log(`Upload is ${progress}% done`);
         },
         (error) => {
           reject(error);

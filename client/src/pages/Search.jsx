@@ -16,7 +16,7 @@ export default function () {
   const [loading, setLoading] = useState(false);
   const [showMore, setShowMore] = useState(false);
   const [listings, setListings] = useState([]);
-  console.log(listings);
+  // console.log(listings);
 
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
@@ -140,7 +140,7 @@ export default function () {
             </button>
           </div>
           <div className="flex flex-wrap items-center gap-2">
-            <label>Type:</label>
+            {/* <label>Type:</label> */}
             <div className="flex gap-2">
               <input
                 type="checkbox"
@@ -173,7 +173,7 @@ export default function () {
             </div>
           </div>
           <div className="flex flex-wrap items-center gap-2">
-            <label>Amenities:</label>
+            {/* <label>Amenities:</label> */}
             <div className="flex gap-2">
               <input
                 type="checkbox"
@@ -196,7 +196,7 @@ export default function () {
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <label>Sort</label>
+            {/* <label>Sort</label> */}
             <select
               id="sort_order"
               className="border rounded-lg p-3"

@@ -20,7 +20,6 @@ export default function Listing() {
   const [error, setError] = useState(false);
   const params = useParams();
   const [show, setShow] = useState(false);
-  // const [contact, setContact] = useState(false);
   const { currentUser } = useSelector((state) => state.user);
 
   useEffect(() => {
