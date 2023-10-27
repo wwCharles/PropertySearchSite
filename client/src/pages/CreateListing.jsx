@@ -47,6 +47,7 @@ export default function createListing() {
       for (let i = 0; i < files.length; i++) {
         const compressedFile = await imageCompression(files[i], options);
         promises.push(storeImage(compressedFile));
+        // promises.push(storeImage(files[i]));
       }
 
       Promise.all(promises)
@@ -71,14 +72,16 @@ export default function createListing() {
   const storeImage = async (file) => {
     return new Promise((resolve, reject) => {
       const storage = getStorage(app);
-      const fileName = new Date().getTime() + file.name;
+      const fileName = new Date().getTime() + "_" + file.name;
       const storageRef = ref(storage, fileName);
+      // console.log("ref", storageRef);
       const uploadTask = uploadBytesResumable(storageRef, file);
       uploadTask.on(
         "state_changed",
         (snapshot) => {
-          const progress =
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          // console.log(snapshot.metadata.timeCreated);
+          // const progress =
+          // (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
           // console.log(`Upload is ${progress}% done`);
         },
         (error) => {
@@ -87,6 +90,7 @@ export default function createListing() {
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
             resolve(downloadURL);
+            // console.log(downloadURL);
           });
         }
       );
@@ -306,7 +310,7 @@ export default function createListing() {
               className="p-3 border border-gray-300 rounded w-full"
               type="file"
               id="images"
-              accept="image/*"
+              accept="image/.*"
               multiple
             />
             <button

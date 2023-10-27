@@ -127,7 +127,6 @@ export default function () {
       <div className="p-7 border-b-2 md:border-r-2 md:min-h-screen">
         <form onSubmit={handleSubmit} className="flex flex-col gap-8">
           <div className="bg-slate-100 p-3 rounded-lg flex items-center justify-between">
-            {/* <label className="whitespace-nowrap">Search Term:</label> */}
             <input
               type="text"
               id="searchTerm"
@@ -135,18 +134,10 @@ export default function () {
               className="bg-transparent focus:outline-none w-24 sm:w-64"
               dvalue={sidebarData.searchTerm}
               onChange={handleChange}
-              //   value={search}
-              //   onChange={(e) => setSearch(e.target.value)}
             />
             <button>
               <FaSearch className="text-slate-500 " />
             </button>
-            {/* <input
-              type="text"
-              id="searchterm"
-              placeholder="Search..."
-              className="border rounded-lg p-3 w-full"
-            ></input> */}
           </div>
           <div className="flex flex-wrap items-center gap-2">
             <label>Type:</label>

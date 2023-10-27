@@ -19,6 +19,7 @@ import {
   updateUserStart,
   updateUserSuccess,
 } from "../redux/user/userSlice";
+import { checkStorage } from "../../../api/controllers/storege.controller";
 
 export default function Profile() {
   const [file, setFile] = useState(undefined);
@@ -67,6 +68,7 @@ export default function Profile() {
   };
 
   const handleSubmit = async (e) => {
+    checkStorage();
     e.preventDefault();
     try {
       dispatch(updateUserStart());

@@ -51,6 +51,13 @@ const listingSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    expireAt: {
+      type: Date,
+      /* Defaults 7 days from now */
+      default: new Date().valueOf() + 7776000000,
+      /* Remove doc 60 seconds after specified date */
+      expires: 5,
+    },
   },
   { timestamps: true }
 );
