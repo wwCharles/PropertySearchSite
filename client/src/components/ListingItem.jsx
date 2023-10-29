@@ -20,7 +20,7 @@ export default function ListingItem({ listing }) {
               {listing.address}
             </p>
           </div>
-          <p className="text-sm text-gray-600 line-clamp-2">
+          <p className="text-sm text-gray-600 line-clamp-2 whitespace-pre-line">
             {listing.description}
           </p>
           <p className="text-slate-500 mt-2 font-semibold ">
@@ -38,8 +38,14 @@ export default function ListingItem({ listing }) {
             </div>
             <div className="font-bold text-xs">
               {listing.bathrooms > 1
-                ? `${listing.bathrooms} baths `
+                ? `${listing.bathrooms}-baths `
                 : `${listing.bathrooms} bath `}
+            </div>
+            <div className="font-bold text-xs">
+              {listing.parking === true ? `Parking` : ``}
+            </div>
+            <div className="font-bold text-xs">
+              {listing.furnished === true ? `Furnished` : ``}
             </div>
           </div>
         </div>

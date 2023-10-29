@@ -52,42 +52,42 @@ export default function Listing() {
       )}
       {listing && !loading && !error && (
         <div>
-          <Swiper navigation>
-            {listing.imageUrls.map((url) => (
-              <SwiperSlide key={url}>
-                <div
-                  className="h-[550px]"
-                  style={{
-                    background: `url(${url}) center no-repeat `,
-                    backgroundSize: "cover",
-                  }}
-                ></div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+          <div className="">
+            <Swiper navigation>
+              {listing.imageUrls.map((url) => (
+                <SwiperSlide key={url}>
+                  <div
+                    className="h-[550px]"
+                    style={{
+                      background: `url(${url}) center no-repeat`,
+                      backgroundSize: "cover lg:contain",
+                    }}
+                  ></div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
 
-          <div className="flex flex-col max-w-4xl mx-auto p-3 my-7 gap-4">
-            <div className="flex gap-4">
-              <p className="bg-red-900 w-full max-w-[100px] text-white text-center p-1 rounded-lg">
-                {listing.type === "rent" ? "For Rent" : "For Sale"}
-              </p>
-            </div>
+          <div className="flex flex-col max-w-4xl mx-auto p-2 my-4 gap-4">
             <p className="text-2xl font-semibold">
               {listing.name}
+              {listing.type === "rent" ? "(For Rent)" : "(For Sale)"}
               <br />
               Ksh {listing.price.toLocaleString("en-US")}
               {listing.type === "rent" && " / month"}
             </p>
-            <p className="flex items-center mt-6 gap-2 text-slate-600  text-sm">
-              <FaMapMarkerAlt className="text-red-700" />
+            <p className="flex items-center mt-4 gap-2 text-slate-800  text-sm">
+              <FaMapMarkerAlt className="text-red-800" />
               {listing.address}
             </p>
             <p className="text-slate-800">
               <span className="font-semibold text-black">Description</span>
               <br />
-              {listing.description}
+              <span className=" whitespace-pre-line">
+                {listing.description}
+              </span>
             </p>
-            <ul className="text-green-900 font-semibold text-sm flex flex-wrap items-center gap-4 sm:gap-6">
+            <ul className="text-slate-800 font-semibold text-sm flex flex-wrap items-center gap-4 sm:gap-6">
               <li className="flex items-center gap-1 whitespace-nowrap ">
                 <FaBed className="text-lg" />
                 {listing.bedrooms > 1
@@ -118,7 +118,7 @@ export default function Listing() {
                   }, 15000);
                 }}
                 type="button"
-                className="bg-red-900 w-full max-w-[100px] text-white text-center p-1 rounded-lg"
+                className="bg-red-800 w-full max-w-[100px] text-white text-center p-1 rounded-lg"
               >
                 Inquire
               </button>

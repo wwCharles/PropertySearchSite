@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { FaSearch } from "react-icons/fa";
+import { FaArrowCircleUp, FaSearch } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
@@ -23,8 +23,14 @@ export default function Header() {
       setSearchTerm(searchTermFromUrl);
     }
   }, [location.search]);
+
+  const topFunction = () => {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  };
+
   return (
-    <header className="bg-blue-100">
+    <header className="bg-blue-100 sticky top-0  z-10">
       <div className="flex justify-between items-center max-w-6xl mx-auto p-3">
         <Link to="/">
           <h1 className="font-bold text-sm sm:text-xl flex flex-wrap">
@@ -67,6 +73,10 @@ export default function Header() {
             )}
           </Link>
         </ul>
+        <FaArrowCircleUp
+          onClick={topFunction}
+          className="fixed bottom-2 right-4  z-50 "
+        />
       </div>
     </header>
   );

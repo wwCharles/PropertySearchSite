@@ -184,7 +184,7 @@ export default function createListing() {
             onChange={handleChange}
             value={formData.name}
           />
-          <input
+          <textarea
             type="text"
             placeholder="Description"
             className="border p-3 rounded-lg"
@@ -252,10 +252,6 @@ export default function createListing() {
               />
               <span>Furnished</span>
             </div>
-            {/* <div className="flex gap-2">
-              <input type="checkbox" id="pets" className="w-5" />
-              <span>Pets</span>
-            </div> */}
           </div>
           <div className="flex flex-wrap gap-6">
             <div className="flex items-center gap-2">
