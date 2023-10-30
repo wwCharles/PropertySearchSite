@@ -5,7 +5,7 @@ import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import PrivateRoute from "./components/privateRoute";
 import Profile from "./pages/Profile";
-import CreateListing from "./pages/createListing";
+import CreateListing from "./pages/CreateListing";
 import UpdateListing from "./pages/UpdateListing";
 import Listing from "./pages/Listing";
 import Search from "./pages/Search";
