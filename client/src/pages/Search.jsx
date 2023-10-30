@@ -124,9 +124,9 @@ export default function () {
 
   return (
     <div className="flex flex-col md:flex-row">
-      <div className="p-7 border-b-2 md:border-r-2 md:min-h-screen">
+      <div className="p-6 border-b-2 md:border-r-2 md:min-h-screen">
         <form onSubmit={handleSubmit} className="flex flex-col gap-8">
-          <div className="bg-slate-100 p-3 rounded-lg flex items-center justify-between">
+          <div className="bg-slate-200 p-2 rounded-lg flex items-center justify-between">
             <input
               type="text"
               id="searchTerm"
@@ -136,16 +136,15 @@ export default function () {
               onChange={handleChange}
             />
             <button>
-              <FaSearch className="text-slate-500 " />
+              <FaSearch className="text-slate-400 " />
             </button>
           </div>
           <div className="flex flex-wrap items-center gap-2">
-            {/* <label>Type:</label> */}
             <div className="flex gap-2">
               <input
                 type="checkbox"
                 id="all"
-                className="w-5"
+                className="w-4"
                 onChange={handleChange}
                 checked={sidebarData.type === "all"}
               />
@@ -155,7 +154,7 @@ export default function () {
               <input
                 type="checkbox"
                 id="sale"
-                className="w-5"
+                className="w-4"
                 onChange={handleChange}
                 checked={sidebarData.type === "sale"}
               />
@@ -165,7 +164,7 @@ export default function () {
               <input
                 type="checkbox"
                 id="rent"
-                className="w-5"
+                className="w-4"
                 onChange={handleChange}
                 checked={sidebarData.type === "rent"}
               />
@@ -173,12 +172,11 @@ export default function () {
             </div>
           </div>
           <div className="flex flex-wrap items-center gap-2">
-            {/* <label>Amenities:</label> */}
             <div className="flex gap-2">
               <input
                 type="checkbox"
                 id="parking"
-                className="w-5"
+                className="w-4"
                 onChange={handleChange}
                 checked={sidebarData.parking}
               />
@@ -188,7 +186,7 @@ export default function () {
               <input
                 type="checkbox"
                 id="furnished"
-                className="w-5"
+                className="w-4"
                 onChange={handleChange}
                 checked={sidebarData.furnished}
               />
@@ -196,10 +194,9 @@ export default function () {
             </div>
           </div>
           <div className="flex items-center gap-2">
-            {/* <label>Sort</label> */}
             <select
               id="sort_order"
-              className="border rounded-lg p-3"
+              className="border rounded-lg p-2"
               onChange={handleChange}
               defaultValue={"created_at_desc"}
             >
@@ -208,18 +205,18 @@ export default function () {
               <option value="price_asc">Price Ascending</option>
             </select>
           </div>
-          <button className="bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-80 ">
+          <button className="bg-slate-800 text-white p-2 rounded-lg uppercase hover:opacity-80 ">
             Search
           </button>
         </form>
       </div>
       <div className="flex-1  ">
-        <h1 className="text-3xl font-semibold border-b p-3 text-slate-700 mt-5  ">
+        <h1 className="text-3xl font-semibold border-b p-3 text-slate-800 mt-4  ">
           Listing Results
         </h1>
-        <div className="flex flex-wrap gap-4 ">
+        <div className="flex flex-wrap gap-4 p-2 ">
           {loading && listings.length === 0 && (
-            <p className="text-lg text-slate-700 p-7 ">No Properties found</p>
+            <p className="text-lg text-slate-800 p-6 ">No Properties found</p>
           )}
           {loading && <p>Loading...</p>}
           {!loading &&
@@ -230,7 +227,7 @@ export default function () {
           {showMore && (
             <button
               onClick={onShowMoreClick}
-              className="text-green-700 hover:text-green-400 p-7 text-center w-full  "
+              className="text-green-800 hover:text-green-600 p-8 text-center w-full  "
             >
               show more
             </button>

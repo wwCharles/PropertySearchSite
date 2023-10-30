@@ -30,7 +30,7 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-blue-100 sticky top-0  z-10">
+    <header className="bg-blue-200 sticky top-0  z-10">
       <div className="flex justify-between items-center max-w-6xl mx-auto p-3">
         <Link to="/">
           <h1 className="font-bold text-sm sm:text-xl flex flex-wrap">

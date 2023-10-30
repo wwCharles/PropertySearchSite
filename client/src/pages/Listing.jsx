@@ -46,27 +46,25 @@ export default function Listing() {
 
   return (
     <main>
-      {loading && <p className="text-center my-7 text-2xl">Loading...</p>}
+      {loading && <p className="text-center my-6 text-2xl">Loading...</p>}
       {error && (
-        <p className="text-center my-7 text-2xl">Something went wrong!</p>
+        <p className="text-center my-6 text-2xl">Something went wrong!</p>
       )}
       {listing && !loading && !error && (
         <div>
-          <div className="">
-            <Swiper navigation>
-              {listing.imageUrls.map((url) => (
-                <SwiperSlide key={url}>
-                  <div
-                    className="h-[550px]"
-                    style={{
-                      background: `url(${url}) center no-repeat`,
-                      backgroundSize: "cover lg:contain",
-                    }}
-                  ></div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
+          <Swiper navigation>
+            {listing.imageUrls.map((url) => (
+              <SwiperSlide key={url}>
+                <div
+                  className="h-[540px] w-full "
+                  style={{
+                    background: `url(${url}) center no-repeat`,
+                    backgroundSize: "contain ",
+                  }}
+                ></div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
 
           <div className="flex flex-col max-w-4xl mx-auto p-2 my-4 gap-4">
             <p className="text-2xl font-semibold">

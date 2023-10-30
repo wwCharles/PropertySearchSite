@@ -40,41 +40,41 @@ export default function SignUp() {
 
   return (
     <div className="p-4 max-w-lg mx-auto">
-      <h1 className="text-3xl text-center font-semibold my-5">Sign Up</h1>
+      <h1 className="text-3xl text-center font-semibold my-4">Sign Up</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input
           type="text"
           placeholder="username"
-          className="border p-3 rounded-lg"
+          className="border p-2 rounded-lg"
           id="username"
           onChange={handleChange}
         ></input>
         <input
           type="email"
           placeholder="email"
-          className="border p-3 rounded-lg"
+          className="border p-2 rounded-lg"
           id="email"
           onChange={handleChange}
         ></input>
         <input
           type="password"
           placeholder="password"
-          className="border p-3 rounded-lg"
+          className="border p-2 rounded-lg"
           id="password"
           onChange={handleChange}
         ></input>
         <button
           disabled={loading}
-          className="bg-slate-700 text-white p-3 rounded-lg upercase hover:opacity-70 disabled:opacity-50"
+          className="bg-slate-800 text-white p-2 rounded-lg upercase hover:opacity-80 disabled:opacity-50"
         >
           {loading ? "Loading" : "Sign Up"}
         </button>
         <OAuth />
       </form>
-      <div className="flex gap-2 mt-5">
+      <div className="flex gap-2 mt-4">
         <p>have an account?</p>
         <Link to={"/signin"}>
-          <span className="text-blue-700">Sign In</span>
+          <span className="text-blue-600">Sign In</span>
         </Link>
       </div>
       {error && <p className="text-3xl text-center font-semibold">{error}</p>}

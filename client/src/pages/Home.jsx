@@ -44,18 +44,18 @@ export default function Home() {
 
   return (
     <div>
-      <div className="max-h-full  p-1 flex flex-col gap-8 ">
+      <div className="max-h-full  p-2 flex flex-col gap-8 ">
         {rentListings && rentListings.length > 0 && (
           <div className="">
-            <div className="my-3">
-              <h2 className="text-2xl font-semibold text-slate-600">
+            <div className="my-2">
+              <h2 className="text-2xl font-semibold text-slate-800">
                 Recent places for rent
               </h2>
               <Link
-                className="text-sm text-blue-800 hover:underline"
+                className="text-sm text-blue-600 hover:underline"
                 to={"/search?type=rent"}
               >
-                Show more places for rent
+                Show more places for rent ➜
               </Link>
             </div>
             <div className="flex flex-wrap gap-4">
@@ -67,15 +67,15 @@ export default function Home() {
         )}
         {saleListings && saleListings.length > 0 && (
           <div className="">
-            <div className="my-3">
-              <h2 className="text-2xl font-semibold text-slate-600">
+            <div className="my-2">
+              <h2 className="text-2xl font-semibold text-slate-800">
                 Recent places for sale
               </h2>
               <Link
-                className="text-sm text-blue-800 hover:underline"
+                className="text-sm text-blue-600 hover:underline"
                 to={"/search?type=sale"}
               >
-                Show more places for sale
+                Show more places for sale ➜
               </Link>
             </div>
             <div className="flex flex-wrap gap-4">

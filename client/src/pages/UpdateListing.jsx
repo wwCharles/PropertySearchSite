@@ -167,8 +167,8 @@ export default function createListing() {
   };
 
   return (
-    <main className="p-3 max-w-4xl mx-auto">
-      <h1 className="text-3xl font-semibold text-center my-7">
+    <main className="p-2 max-w-4xl mx-auto">
+      <h1 className="text-3xl font-semibold text-center my-6">
         Update Listing
       </h1>
       <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4">
@@ -176,7 +176,7 @@ export default function createListing() {
           <input
             type="text"
             placeholder="Name"
-            className="border p-3 rounded-lg"
+            className="border p-2 rounded-lg"
             id="name"
             maxLength="62"
             minLength="10"
@@ -187,7 +187,7 @@ export default function createListing() {
           <textarea
             type="text"
             placeholder="Description"
-            className="border p-3 rounded-lg"
+            className="border p-2 rounded-lg"
             id="description"
             required
             onChange={handleChange}
@@ -196,7 +196,7 @@ export default function createListing() {
           <input
             type="text"
             placeholder="Address"
-            className="border p-3 rounded-lg"
+            className="border p-2 rounded-lg"
             id="address"
             required
             onChange={handleChange}
@@ -205,7 +205,7 @@ export default function createListing() {
           <input
             type="number"
             placeholder="Contact Person"
-            className="border p-3 rounded-lg"
+            className="border p-2 rounded-lg"
             id="phone"
             required
             onChange={handleChange}
@@ -216,7 +216,7 @@ export default function createListing() {
               <input
                 type="checkbox"
                 id="sale"
-                className="w-5"
+                className="w-4"
                 onChange={handleChange}
                 checked={formData.type === "sale"}
               />
@@ -226,7 +226,7 @@ export default function createListing() {
               <input
                 type="checkbox"
                 id="rent"
-                className="w-5"
+                className="w-4"
                 onChange={handleChange}
                 checked={formData.type === "rent"}
               />
@@ -236,7 +236,7 @@ export default function createListing() {
               <input
                 type="checkbox"
                 id="parking"
-                className="w-5"
+                className="w-4"
                 onChange={handleChange}
                 checked={formData.parking}
               />
@@ -246,7 +246,7 @@ export default function createListing() {
               <input
                 type="checkbox"
                 id="furnished"
-                className="w-5"
+                className="w-4"
                 onChange={handleChange}
                 checked={formData.furnished}
               />
@@ -261,7 +261,7 @@ export default function createListing() {
                 min="1"
                 max="10"
                 required
-                className="p-3 border border-gray-300 rounded-lg"
+                className="p-2 border border-gray-400 rounded-lg"
                 onChange={handleChange}
                 value={formData.bedrooms}
               />
@@ -274,7 +274,7 @@ export default function createListing() {
                 min="1"
                 max="10"
                 required
-                className="p-3 border border-gray-300 rounded-lg"
+                className="p-2 border border-gray-400 rounded-lg"
                 onChange={handleChange}
                 value={formData.bathrooms}
               />
@@ -287,7 +287,7 @@ export default function createListing() {
                 min="10000"
                 max="1000000000"
                 required
-                className="p-3 s border border-gray-300 rounded-lg"
+                className="p-2 border border-gray-400 rounded-lg"
                 onChange={handleChange}
                 value={formData.price}
               />
@@ -301,7 +301,7 @@ export default function createListing() {
         <div className="flex flex-col gap-4 flex-1 ">
           <p className="font-semibold">
             Images:
-            <span className="font-normal text-gray-700 ml-2">
+            <span className="font-normal text-gray-800 ml-2">
               {" "}
               The first image will be cover
             </span>
@@ -309,7 +309,7 @@ export default function createListing() {
           <div className="flex gap-4">
             <input
               onChange={(e) => setFiles(e.target.files)}
-              className="p-3 border border-gray-300 rounded w-full"
+              className="p-2 border border-gray-400 rounded w-full"
               type="file"
               id="images"
               accept="image/*"
@@ -318,19 +318,19 @@ export default function createListing() {
             <button
               type="button"
               onClick={handleImageSubmit}
-              className="p-3 bg-green-700 text-white border border-green-700 rounded uppercase hover:opacity-80 disabled:opacity-80"
+              className="p-3 bg-green-600 text-white border border-green-800 rounded uppercase hover:opacity-80 disabled:opacity-50"
             >
               {uploading ? "Uploading..." : "Upload"}
             </button>
           </div>
-          <p className="text-sm text-red-700">
+          <p className="text-sm text-red-800">
             {imageUploadError && imageUploadError}
           </p>
           {formData.imageUrls.length > 0 &&
             formData.imageUrls.map((url, index) => (
               <div
                 key={url}
-                className="flex justify-between border p-3 items-center"
+                className="flex justify-between border p-2 items-center"
               >
                 <img
                   src={url}
@@ -340,8 +340,8 @@ export default function createListing() {
                 <button
                   type="button"
                   onClick={() => handleRemoveImage(index)}
-                  className="p-3 text-white
-                   bg-red-700 rounded-lg uppercase hover:opacity-75"
+                  className="p-2 text-white
+                   bg-red-800 rounded-lg uppercase hover:opacity-80"
                 >
                   Delete
                 </button>
