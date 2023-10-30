@@ -19,7 +19,6 @@ export default function Listing() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const params = useParams();
-  const [show, setShow] = useState(false);
   const { currentUser } = useSelector((state) => state.user);
 
   useEffect(() => {
@@ -107,21 +106,17 @@ export default function Listing() {
                 {listing.furnished ? "Furnished" : "Unfurnished"}
               </li>
             </ul>
-            <div className="flex gap-4">
-              <button
-                onClick={() => {
-                  setShow(true);
-                  setTimeout(() => {
-                    setShow(false);
-                  }, 15000);
-                }}
-                type="button"
-                className="bg-red-800 w-full max-w-[100px] text-white text-center p-1 rounded-lg"
-              >
-                Inquire
-              </button>
+            <div>
+              <p className="  text-slate-800 font-semibold 2xl: ">Inquire</p>
+              <p className="text-slate-800">
+                Realtor: {currentUser.username}
+                <br />
+                Email: {currentUser.email}
+                <br />
+                Coontact: {listing.phone}
+              </p>
             </div>
-            {show ? (
+            {/* {show ? (
               <p className="text-slate-800">
                 {currentUser.username}
                 <br />
@@ -131,7 +126,7 @@ export default function Listing() {
               </p>
             ) : (
               ""
-            )}
+            )} */}
           </div>
         </div>
       )}
