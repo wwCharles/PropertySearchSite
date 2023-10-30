@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore from "swiper";
@@ -19,7 +19,8 @@ export default function Listing() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const params = useParams();
-  const { currentUser } = useSelector((state) => state.user);
+  const [show, setShow] = useState(false);
+  const [landlord, setLandlord] = useState(null);
 
   useEffect(() => {
     const fetchListing = async () => {
@@ -33,6 +34,11 @@ export default function Listing() {
           return;
         }
         setListing(data);
+
+        const user = await fetch(`/api/user/${data.userRef}`);
+        const userData = await user.json();
+        setLandlord(userData);
+
         setLoading(false);
         setError(false);
       } catch (error) {
@@ -106,27 +112,31 @@ export default function Listing() {
                 {listing.furnished ? "Furnished" : "Unfurnished"}
               </li>
             </ul>
-            <div>
-              <p className="  text-slate-800 font-semibold 2xl: ">Inquire</p>
-              <p className="text-slate-800">
-                Realtor: {currentUser.username}
-                <br />
-                Email: {currentUser.email}
-                <br />
-                Coontact: {listing.phone}
-              </p>
+            <div className="flex gap-4">
+              <button
+                onClick={() => {
+                  setShow(true);
+                  setTimeout(() => {
+                    setShow(false);
+                  }, 15000);
+                }}
+                type="button"
+                className="bg-red-800 w-full max-w-[100px] text-white text-center p-1 rounded-lg"
+              >
+                Inquire
+              </button>
             </div>
-            {/* {show ? (
+            {show ? (
               <p className="text-slate-800">
-                {currentUser.username}
+                {landlord.username}
                 <br />
-                {currentUser.email}
+                {landlord.email}
                 <br />
                 {listing.phone}
               </p>
             ) : (
               ""
-            )} */}
+            )}
           </div>
         </div>
       )}
