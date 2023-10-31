@@ -31,11 +31,11 @@ export default function Header() {
 
   return (
     <header className="bg-blue-200 sticky top-0  z-10">
-      <div className="flex justify-between items-center max-w-6xl mx-auto p-3">
+      <div className="flex justify-between items-center max-w-4xl mx-auto p-2">
         <Link to="/">
           <h1 className="font-bold text-sm sm:text-xl flex flex-wrap">
-            <span className="text-red-800 text-4xl  ">Mali</span>
-            <span className="text-slate-800">254</span>
+            <span className="text-red-800">rentbuy</span>
+            <span className="text-slate-800 text-opacity-50">254</span>
           </h1>
         </Link>
         <form
@@ -50,24 +50,24 @@ export default function Header() {
             onChange={(e) => setSearchTerm(e.target.value)}
           />
           <button>
-            <FaSearch className="text-slate-500 " />
+            <FaSearch className="text-slate-400 " />
           </button>
         </form>
         <ul className="flex gap-4">
           <Link to="/">
-            <li className="hidden sm:inline text-slate-800 hover:text-blue-400  text-2xl">
+            <li className="hidden sm:inline text-slate-800 hover:text-blue-400">
               Home
             </li>
           </Link>
           <Link to="/profile">
             {currentUser ? (
               <img
-                className="rounded-full h-8 w-8 object-cover"
+                className="rounded-full h-6 w-6 object-cover"
                 src={currentUser.avatar}
                 alt="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQG7WjONaOfilXR3bebrfe_zcjl58ZdAzJHYw&usqp=CAU"
               />
             ) : (
-              <li className="hidden sm:inline text-slate-800 hover:text-blue-400 text-2xl ">
+              <li className="sm:inline text-slate-800 hover:text-blue-400 ">
                 Login
               </li>
             )}

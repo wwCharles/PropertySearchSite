@@ -24,7 +24,7 @@ export default function ListingItem({ listing }) {
             {listing.description}
           </p>
           <p className="text-slate-500 mt-2 font-semibold ">
-            KHs
+            KSh
             {listing.offer
               ? listing.price.toLocaleString("en-US")
               : listing.price.toLocaleString("en-US")}

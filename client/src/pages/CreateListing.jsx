@@ -73,10 +73,13 @@ export default function createListing() {
       const storage = getStorage(app);
       const fileName = new Date().getTime() + "_" + file.name;
       const storageRef = ref(storage, fileName);
-      // console.log("ref", storageRef);
       const uploadTask = uploadBytesResumable(storageRef, file);
       uploadTask.on(
         "state_changed",
+        (snapshot) => {
+          const progress =
+            (snapshot.uploadBytesResumable / snapshot.totalBytes) * 100;
+        },
         (error) => {
           reject(error);
         },
@@ -170,7 +173,7 @@ export default function createListing() {
             onChange={handleChange}
             value={formData.name}
           />
-          <input
+          <textarea
             type="text"
             placeholder="Description"
             className="border p-2 rounded-lg"

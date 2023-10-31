@@ -38,7 +38,6 @@ export default function Listing() {
         const user = await fetch(`/api/user/${data.userRef}`);
         const userData = await user.json();
         setLandlord(userData);
-
         setLoading(false);
         setError(false);
       } catch (error) {
@@ -61,9 +60,9 @@ export default function Listing() {
             {listing.imageUrls.map((url) => (
               <SwiperSlide key={url}>
                 <div
-                  className="h-[540px] w-full "
+                  className="h-[540px] w-full"
                   style={{
-                    background: `url(${url}) center no-repeat`,
+                    background: `url("${url}") center no-repeat`,
                     backgroundSize: "contain ",
                   }}
                 ></div>
@@ -76,7 +75,7 @@ export default function Listing() {
               {listing.name}
               {listing.type === "rent" ? "(For Rent)" : "(For Sale)"}
               <br />
-              Ksh {listing.price.toLocaleString("en-US")}
+              KSh {listing.price.toLocaleString("en-US")}
               {listing.type === "rent" && " / month"}
             </p>
             <p className="flex items-center mt-4 gap-2 text-slate-800  text-sm">
@@ -121,7 +120,7 @@ export default function Listing() {
                   }, 15000);
                 }}
                 type="button"
-                className="bg-red-800 w-full max-w-[100px] text-white text-center p-1 rounded-lg"
+                className="bg-red-800 w-full max-w-[100px] text-white text-center p-1 rounded-lg active:bg-green-600 "
               >
                 Inquire
               </button>
